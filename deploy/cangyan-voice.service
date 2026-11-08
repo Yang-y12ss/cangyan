@@ -1,0 +1,21 @@
+[Unit]
+Description=CangYan Voice - K1 local ASR command listener
+Documentation=https://gitee.com/your-name/cangyan
+After=network.target cangyan.service
+Wants=cangyan.service
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+# 必须 root：ASR 模型在 /root/.cache/sensevoice
+# 内部通过 runuser 切到 dwb 调 arecord（走 dwb 的 PulseAudio 会话）
+User=root
+Group=root
+WorkingDirectory=/home/dwb/cangyan
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/usr/bin/python3 -u /home/dwb/cangyan/voice.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

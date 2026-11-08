@@ -1,0 +1,24 @@
+[Unit]
+Description=CangYan - K1 Edge Vision Monitoring Terminal
+Documentation=https://gitee.com/your-name/cangyan
+# 检测程序以 -f 无窗口模式运行，不需要图形会话，开机即可启动
+After=network.target
+# 崩溃后允许无限次重启（比赛演示期间不允许被 start limit 拦住）
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+# ⚠️ 用户必须和代码目录的属主一致。本机是 dwb（不是文档里常写的 bianbu）
+User=dwb
+Group=dwb
+WorkingDirectory=/home/dwb/cangyan
+Environment=PYTHONUNBUFFERED=1
+# Qt 走 offscreen 后端：不打开任何窗口，纯后台推理
+Environment=QT_QPA_PLATFORM=offscreen
+ExecStart=/usr/bin/python3 -u /home/dwb/cangyan/monitor.py
+Restart=always
+RestartSec=5
+# 日志走 journald：journalctl -u cangyan -f
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,16 @@
+{
+  "demo_bin": "/usr/bin/detection_stream_demo",
+  "model": "/usr/share/ai-support/models/yolov6.json",
+  "camera": "0",
+  "demo_extra_args": ["-f", "-w", "640", "-h", "480"],
+  "frame_w": 640,
+  "frame_h": 480,
+  "zone": [[0.25, 0.2], [0.75, 0.2], [0.75, 0.8], [0.25, 0.8]],
+  "confirm_frames": 8,
+  "release_frames": 15,
+  "watch_classes": ["person"],
+  "min_score": 0.45,
+  "http_port": 8080,
+  "idle_timeout_s": 0.8,
+  "restart_delay_s": 5
+}

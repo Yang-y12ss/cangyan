@@ -1,0 +1,9 @@
+# 本项目零第三方依赖，仅使用 Python 3 标准库：
+#   os / re / json / time / subprocess / threading / http.server
+#
+# 因此本文件没有需要安装的包。
+# 板子上直接运行即可：python3 -u monitor.py
+#
+# 说明：运行依赖的是系统预装的官方检测程序与模型，不通过 pip 安装：
+#   /usr/bin/detection_stream_demo
+#   /usr/share/ai-support/models/yolov6.json  (yolov6p5_n.q.onnx, INT8)
